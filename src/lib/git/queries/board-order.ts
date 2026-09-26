@@ -79,9 +79,8 @@ export const boardPredecessorId = (
 ) => boardItemPredecessor(data, itemId, false);
 
 /** The id a WRITE may anchor this card to: the nearest non-archived predecessor,
- *  null when only archived cards precede it. Also what the chase compares against,
- *  so the comparison and the next anchor are the same reading of the cache, and
- *  what {@link repositionVerdict} reads a failed write's target back with. */
+ *  null when only archived cards precede it — and what {@link repositionVerdict}
+ *  reads a failed write's target back with, so the two are the same reading. */
 export const boardAnchorId = (
   data: InfiniteData<BoardItems, string | null> | undefined,
   itemId: string,
@@ -121,6 +120,124 @@ export function failedRepositionTarget(
   return folded === undefined ? tried : folded;
 }
 
+/** The newest press on a card whose reposition is already in flight, waiting for
+ *  that write's chase to send it: the target it asked for, and the lens it was
+ *  pressed under — the one a failure verdict then watches. */
+export interface DesiredRepositionTarget {
+  afterId: string | null;
+  key: QueryKey;
+}
+
+/** How many FOLLOW-UP writes one burst may spend chasing the card's newest press.
+ *  Counts writes across the whole burst, never reset by a press folding in.
+ *  Reachable by ordinary use — a long key-hold down a long column moves faster than
+ *  the round trips — so running out is a real outcome rather than a pathological
+ *  one, and the settle answers it with a re-read instead of a patch. */
+export const REORDER_CHASE_LIMIT = 8;
+
+/** Whether a reposition press is OLDER than the newest one made on its card.
+ *  Presses are stamped in the order the user made them, but each one's
+ *  `onMutate` awaits a cancel before it paints or writes, and a cancel that tears
+ *  down a read in flight settles later than one that finds nothing — so a later
+ *  press can overtake an earlier one there, and the earlier must then give way. */
+export function staleRepositionPress(
+  newest: number | undefined,
+  press: number,
+): boolean {
+  return newest !== undefined && newest > press;
+}
+
+/** Where a press goes once it reaches its write: DROPPED when a newer press on
+ *  the card exists (that one runs or folds on its own, and this one would steer
+ *  the card back), else FOLDED into the card's write in flight, else RUN. */
+export function routeRepositionPress(
+  newest: number | undefined,
+  press: number,
+  inFlight: boolean,
+): "drop" | "fold" | "run" {
+  if (staleRepositionPress(newest, press)) return "drop";
+  return inFlight ? "fold" : "run";
+}
+
+/** What a live reposition does after a write lands. `consumed` says whether the
+ *  waiting press is spent by this decision, so the caller clears it. */
+export type ChaseStep =
+  | { action: "converge"; consumed: boolean }
+  | {
+      action: "write";
+      afterId: string | null;
+      key: QueryKey;
+      consumed: true;
+    }
+  | { action: "exhaust"; consumed: true };
+
+/**
+ * One round of a reposition's chase, decided from the newest WAITING press alone —
+ * never from a lens's cache, so a press under another saved view is chased like
+ * any other and reads that land mid-chase can't feed a write. No press waiting,
+ * or one asking for the target just written, is convergence; any other is written
+ * next while rounds remain, and ends the burst short when none do. A waiting
+ * press is spent by every decision that sees it, so no round sends it twice.
+ */
+export function nextChaseTarget(
+  slot: DesiredRepositionTarget | undefined,
+  justWrote: string | null,
+  roundsLeft: number,
+): ChaseStep {
+  if (slot === undefined) return { action: "converge", consumed: false };
+  if (slot.afterId === justWrote) return { action: "converge", consumed: true };
+  if (roundsLeft <= 0) return { action: "exhaust", consumed: true };
+  return {
+    action: "write",
+    afterId: slot.afterId,
+    key: slot.key,
+    consumed: true,
+  };
+}
+
+/** A reposition burst whose write failed every retry, as its verdict needs it. */
+export interface RepositionFailureTarget {
+  /** The target the verdict judges: the newest press never sent, else the one
+   *  the failed write tried. */
+  afterId: string | null;
+  /** The lens that target was pressed under, which the verdict watches; null for
+   *  the lens the burst started on. */
+  watchKey: QueryKey | null;
+  /** The last target a write of this burst LANDED — how far a restore may go back,
+   *  since going further would erase a write that stuck. Undefined when none
+   *  landed; null is the top of the board. */
+  landedAfterId: string | null | undefined;
+}
+
+/** {@link RepositionFailureTarget} from ONE reading of the waiting slot, so the
+ *  target judged and the lens watched always come from the same press: a press
+ *  still waiting, else the target just tried and the lens it came from
+ *  (`writtenKey`, null for the burst's own). */
+export function repositionFailure(
+  slot: DesiredRepositionTarget | undefined,
+  writtenKey: QueryKey | null,
+  tried: string | null,
+  landedAfterId: string | null | undefined,
+): RepositionFailureTarget {
+  return {
+    afterId: failedRepositionTarget(slot?.afterId, tried),
+    watchKey: slot === undefined ? writtenKey : slot.key,
+    landedAfterId,
+  };
+}
+
+/** Where a refused reposition puts the card back: the last target a write of its
+ *  burst LANDED, else where it sat before the burst. A landed write stuck, so going
+ *  back past it would erase a real move. Undefined when neither is known — the
+ *  card then holds until a read shows where it is. `landed` is undefined when
+ *  nothing landed; null is a real target, the top of the board. */
+export function repositionRestoreTarget(
+  landed: string | null | undefined,
+  before: string | null | undefined,
+): string | null | undefined {
+  return landed === undefined ? before : landed;
+}
+
 /** Clock slack under the settled gate. `performance.now()` is coarsened (100µs-class
  *  on WebView2, ~1ms on WebKit) and the recovery re-read is armed with
  *  exactly the replica window, so a read it starts could stamp a hair short of it;
@@ -133,9 +250,14 @@ export interface RepositionWatch {
   failedAfterId: string | null;
   /** The earliest FETCH START a deciding read may have. */
   settledAt: number;
-  /** When the lens's current read started; undefined for one already running when
-   *  the watch began, or once a read has landed. */
+  /** When the watched lens's read in flight STARTED; undefined before one starts
+   *  (a read already running when the watch began never stamps) and once a read
+   *  has landed. A move to another lens carries THAT lens's own read in flight, if
+   *  the watch saw it start. A read CANCELLED mid-flight keeps its stamp: the
+   *  revert reaches the watch as no event it reads. */
   fetchStartedAt: number | undefined;
+  /** Whether the bound has already waited once for a deciding read in flight. */
+  boundExtended: boolean;
 }
 
 export function watchReposition(
@@ -149,15 +271,56 @@ export function watchReposition(
     failedAfterId,
     settledAt: now + replicaLagMs - REPOSITION_SETTLE_SLACK_MS,
     fetchStartedAt: undefined,
+    boundExtended: false,
   };
 }
 
-/** What can happen to a watched lens, or to the watch itself. `inactive`: the lens
- *  lost its last enabled observer, so no re-read will reach it. `superseded`: the
- *  same card was repositioned again. `contested`: another write changed what the
- *  project's order or archived flags say, so the card's place proves nothing. */
+/** Whether the lens's read in flight started past the replica window, so its
+ *  answer decides the verdict. */
+const decidingRead = (watch: RepositionWatch) =>
+  watch.fetchStartedAt !== undefined && watch.fetchStartedAt >= watch.settledAt;
+
+/** The lens a reposition verdict can be judged on: the first ACTIVE candidate, in
+ *  the caller's preference order, whose cache draws both the card and the anchor
+ *  it is judged against — a lens missing either would read a landed move as
+ *  failed. The anchor counts as drawn the way {@link boardAnchorId} can read it:
+ *  a copy that isn't archived. A null anchor needs no containment: each lens keeps
+ *  the project's order, so a card at the top of the project leads every lens that
+ *  draws it. */
+export function pickWatchLens<
+  T extends {
+    active: boolean;
+    data: InfiniteData<BoardItems, string | null> | undefined;
+  },
+>(
+  candidates: readonly T[],
+  itemId: string,
+  anchorId: string | null,
+): T | undefined {
+  return candidates.find(
+    (lens) =>
+      lens.active &&
+      boardPredecessorId(lens.data, itemId) !== undefined &&
+      (anchorId === null ||
+        lens.data?.pages.some((page) =>
+          page.items.some(
+            (item) => item.itemId === anchorId && !item.isArchived,
+          ),
+        ) === true),
+  );
+}
+
+/** What can happen to a watched lens, or to the watch itself. `inactive`: no
+ *  active lens of the board can judge the move ({@link pickWatchLens}), so no
+ *  re-read will. `retarget`: the watch moved to another lens of the board, whose
+ *  read in flight started at `fetchStartedAt` (undefined when the watch didn't see
+ *  one start; never another lens's read). `bound`: the wait ran out of time.
+ *  `superseded`: the same card was repositioned again. `contested`: another write
+ *  changed what the project's order or archived flags say, so the card's place
+ *  proves nothing. */
 export type RepositionWatchEvent =
   | { type: "fetch"; at: number }
+  | { type: "retarget"; fetchStartedAt: number | undefined }
   | {
       type: "success";
       /** An optimistic `setQueryData`, which says nothing about the server. */
@@ -172,10 +335,13 @@ export type RepositionWatchEvent =
   | { type: "superseded" }
   | { type: "contested" };
 
+/** `restore`: whether the card still holds its optimistic place and must be put
+ *  back — false where a deciding read already painted the server's order, or where
+ *  another press planned from the held place. */
 export type RepositionWatchStep =
   | { kind: "wait"; watch: RepositionWatch }
   | { kind: "silent" }
-  | { kind: "report" };
+  | { kind: "report"; restore: boolean };
 
 /**
  * The deferred failure report's whole decision, one event at a time. Only a read
@@ -184,6 +350,13 @@ export type RepositionWatchStep =
  * Load more leave it waiting. It never swallows a real error: a failed read, a
  * lens nothing will re-read, the bound running out and a contested order all
  * report. Only a committed verdict or the user moving the card again is silent.
+ *
+ * The bound waits ONCE for a deciding read already in flight, since that read
+ * landing after a report would move the card a third time; the second bound
+ * reports regardless, so a hung read can't hold the verdict open. A report
+ * restores the card unless a deciding read's order is already on screen, or the
+ * report is `contested` — the contesting press was planned from the held place,
+ * and its own settle reconciles the order.
  */
 export function stepRepositionWatch(
   watch: RepositionWatch,
@@ -192,23 +365,37 @@ export function stepRepositionWatch(
   switch (event.type) {
     case "fetch":
       return { kind: "wait", watch: { ...watch, fetchStartedAt: event.at } };
+    // The old lens's stamp goes and the new lens's own comes; the window and the
+    // bound carry over.
+    case "retarget":
+      return {
+        kind: "wait",
+        watch: { ...watch, fetchStartedAt: event.fetchStartedAt },
+      };
     case "success": {
       if (event.manual || event.fetchMore) return { kind: "wait", watch };
-      const started = watch.fetchStartedAt;
       const verdict = repositionVerdict(
         event.data,
         watch.itemId,
         watch.failedAfterId,
-        started !== undefined && started >= watch.settledAt,
+        decidingRead(watch),
       );
       if (verdict === "committed") return { kind: "silent" };
-      if (verdict === "failed") return { kind: "report" };
+      if (verdict === "failed") return { kind: "report", restore: false };
+      // Spent, so the stamp keeps describing only a read still in flight.
       return { kind: "wait", watch: { ...watch, fetchStartedAt: undefined } };
     }
+    case "bound":
+      if (!watch.boundExtended && decidingRead(watch))
+        return { kind: "wait", watch: { ...watch, boundExtended: true } };
+      return { kind: "report", restore: true };
     case "superseded":
       return { kind: "silent" };
-    default:
-      return { kind: "report" };
+    case "contested":
+      return { kind: "report", restore: false };
+    case "error":
+    case "inactive":
+      return { kind: "report", restore: true };
   }
 }
 
