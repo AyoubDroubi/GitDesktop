@@ -2,7 +2,7 @@
 title: "I use AI every day. My Git client still has an off switch."
 description: "GitDesktop is AI-native. One toggle hides all of it. On agency, trust, and the Git client that's left when the AI is gone."
 pubDate: 2026-08-05
-author: theBGuy
+author: "Upstream GitDesktop project"
 pillar: ai-you-own
 tags: ["ai", "workflow"]
 ogImage: "/og/the-ai-off-switch.png"
