@@ -7,7 +7,7 @@
 //! the BARE FILENAME, silently killing running MCP servers.
 //!
 //! So MCP runs from a managed copy at
-//! `%LOCALAPPDATA%\com.thebguy.gitdesktop\bin\gitdesktop-mcp.exe`. Both
+//! `%LOCALAPPDATA%\com.ayoubdroubi.gitdesktop\bin\gitdesktop-mcp.exe`. Both
 //! properties are load-bearing: the path (outside the install dir) defeats the
 //! lock, the distinct filename defeats kill-by-name. Safe because MCP dispatch
 //! is argv[0]-independent (`main.rs` checks `argv[1] == "mcp"`).
