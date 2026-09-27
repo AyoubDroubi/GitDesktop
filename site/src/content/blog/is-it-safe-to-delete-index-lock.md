@@ -2,7 +2,7 @@
 title: "Is it safe to delete .git/index.lock?"
 description: "Git says another process seems to be running. What .git/index.lock is, the one check to run before deleting it, and what a hard kill leaves behind."
 pubDate: 2026-09-16
-author: theBGuy
+author: "Upstream GitDesktop project"
 pillar: git-safety
 tags: ["git", "recovery"]
 ogImage: "/og/is-it-safe-to-delete-index-lock.png"
