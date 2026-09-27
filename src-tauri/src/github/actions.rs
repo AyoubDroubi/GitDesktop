@@ -236,7 +236,7 @@ struct RestRun {
     #[serde(default, deserialize_with = "de_null_string")]
     conclusion: String,
     /// The RUN's name, NOT the workflow's: a `run-name:` workflow and GitHub's dynamic
-    /// workflows put a per-run string here (measured on theBGuy/GitDesktop: workflow
+    /// workflows put a per-run string here (measured on AyoubDroubi/GitDesktop: workflow
     /// 298718218 "Dependabot Updates" spells its runs "npm_and_yarn in /. for fast-uri
     /// - Update #1553823451"). Only a `workflow_id` lookup yields the workflow name.
     #[serde(default, deserialize_with = "de_null_string")]
@@ -1158,7 +1158,7 @@ mod tests {
     }
 
     /// Field values captured verbatim from `gh api --method GET
-    /// repos/theBGuy/GitDesktop/actions/runs`, trimmed to the keys the mapping reads
+    /// repos/AyoubDroubi/GitDesktop/actions/runs`, trimmed to the keys the mapping reads
     /// plus the `url`/`name` pair REST spells differently from the neutral row. The id
     /// is past 2^32, so a `u32` field would truncate rather than merely warn.
     #[test]
@@ -1178,8 +1178,8 @@ mod tests {
                     "status": "completed",
                     "conclusion": "success",
                     "workflow_id": 307406754,
-                    "url": "https://api.github.com/repos/theBGuy/GitDesktop/actions/runs/33705563157",
-                    "html_url": "https://github.com/theBGuy/GitDesktop/actions/runs/33705563157",
+                    "url": "https://api.github.com/repos/AyoubDroubi/GitDesktop/actions/runs/33705563157",
+                    "html_url": "https://github.com/AyoubDroubi/GitDesktop/actions/runs/33705563157",
                     "created_at": "2026-09-03T01:54:57Z",
                     "updated_at": "2026-09-03T01:55:13Z",
                     "run_started_at": "2026-09-03T01:54:57Z"
@@ -1192,7 +1192,7 @@ mod tests {
                     "display_title": "a row stripped to nulls",
                     "status": "completed",
                     "conclusion": "success",
-                    "html_url": "https://github.com/theBGuy/GitDesktop/actions/runs/0",
+                    "html_url": "https://github.com/AyoubDroubi/GitDesktop/actions/runs/0",
                     "created_at": "2026-09-03T01:00:00Z",
                     "updated_at": "2026-09-03T01:00:10Z"
                 },
@@ -1207,7 +1207,7 @@ mod tests {
                     "status": "queued",
                     "conclusion": null,
                     "workflow_id": 334643035,
-                    "html_url": "https://github.com/theBGuy/GitDesktop/actions/runs/33705353404",
+                    "html_url": "https://github.com/AyoubDroubi/GitDesktop/actions/runs/33705353404",
                     "created_at": "2026-09-03T01:51:49Z",
                     "updated_at": "2026-09-03T01:52:24Z",
                     "run_started_at": null
@@ -1243,7 +1243,7 @@ mod tests {
         assert_eq!(first.updated_at, "2026-09-03T01:55:13Z");
         assert_eq!(
             first.url,
-            "https://github.com/theBGuy/GitDesktop/actions/runs/33705563157",
+            "https://github.com/AyoubDroubi/GitDesktop/actions/runs/33705563157",
             "url must be the BROWSER url, never REST's api `url`"
         );
         assert_eq!(
@@ -1273,7 +1273,7 @@ mod tests {
 
     /// REST's per-run `name` is the RUN's name, so a dynamic or `run-name:` workflow
     /// makes it diverge from the workflow's. Values captured from
-    /// theBGuy/GitDesktop: `gh run list` answers `workflowName: "Dependabot Updates"`
+    /// AyoubDroubi/GitDesktop: `gh run list` answers `workflowName: "Dependabot Updates"`
     /// for run 33710268988, where REST's `name` is the update's own title.
     #[test]
     fn the_workflow_index_wins_over_a_runs_own_name() {
@@ -1290,7 +1290,7 @@ mod tests {
                     "workflow_id": 298718218,
                     "head_branch": "master",
                     "event": "dynamic",
-                    "html_url": "https://github.com/theBGuy/GitDesktop/actions/runs/33710268988",
+                    "html_url": "https://github.com/AyoubDroubi/GitDesktop/actions/runs/33710268988",
                     "created_at": "2026-09-03T04:11:02Z",
                     "updated_at": "2026-09-03T04:11:44Z",
                     "run_started_at": "2026-09-03T04:11:02Z"
@@ -1305,7 +1305,7 @@ mod tests {
                     "workflow_id": 307406754,
                     "head_branch": "master",
                     "event": "push",
-                    "html_url": "https://github.com/theBGuy/GitDesktop/actions/runs/33717811001",
+                    "html_url": "https://github.com/AyoubDroubi/GitDesktop/actions/runs/33717811001",
                     "created_at": "2026-09-03T05:00:00Z",
                     "updated_at": "2026-09-03T05:00:20Z",
                     "run_started_at": "2026-09-03T05:00:00Z"
@@ -1320,7 +1320,7 @@ mod tests {
                     "workflow_id": 999999999,
                     "head_branch": "master",
                     "event": "dynamic",
-                    "html_url": "https://github.com/theBGuy/GitDesktop/actions/runs/33700936127",
+                    "html_url": "https://github.com/AyoubDroubi/GitDesktop/actions/runs/33700936127",
                     "created_at": "2026-09-03T00:10:00Z",
                     "updated_at": "2026-09-03T00:10:30Z",
                     "run_started_at": "2026-09-03T00:10:00Z"
