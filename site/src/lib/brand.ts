@@ -7,7 +7,7 @@
 // remains a manual copy.
 export const canonicalSentence =
   "GitDesktop is a free, open-source (Apache-2.0) desktop Git client for " +
-  "Windows, macOS, and Linux, built with Tauri 2 and React 19 by theBGuy. " +
+  "Windows, macOS, and Linux, built with Tauri 2 and React 19. " +
   "It works with GitHub, GitLab, and Bitbucket: staging, diffs, branches, " +
   "history, and the full pull-request loop with code review, CI, and issues " +
   "— plus optional AI you can hide entirely.";
