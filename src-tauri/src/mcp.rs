@@ -1209,7 +1209,7 @@ mod tests {
 
     // --- classify_global_entry ----------------------------------------------
 
-    const LAUNCHER: &str = r"C:\Users\me\AppData\Local\com.thebguy.gitdesktop\bin\gitdesktop-mcp.exe";
+    const LAUNCHER: &str = r"C:\Users\me\AppData\Local\com.ayoubdroubi.gitdesktop\bin\gitdesktop-mcp.exe";
 
     #[test]
     fn classify_absent_when_no_mcp_servers_or_key() {
@@ -1297,7 +1297,7 @@ mod tests {
         // Config command differs from the launcher only by separator style and a
         // trailing separator (same case) — matches on every platform.
         let configured =
-            r"C:/Users/me/AppData/Local/com.thebguy.gitdesktop/bin/gitdesktop-mcp.exe/";
+            r"C:/Users/me/AppData/Local/com.ayoubdroubi.gitdesktop/bin/gitdesktop-mcp.exe/";
         let doc = json!({ "mcpServers": { "gitdesktop": { "command": configured } } });
         let s = classify_global_entry(&doc, LAUNCHER);
         assert!(s.installed);
@@ -1310,7 +1310,7 @@ mod tests {
         // On case-insensitive filesystems a case-only (plus separator) difference
         // is still the current launcher. (On Linux those paths are distinct, so
         // this is gated — see `norm_launcher_path`.)
-        let configured = r"c:/users/ME/appdata/local/com.thebguy.gitdesktop/bin/gitdesktop-mcp.exe";
+        let configured = r"c:/users/ME/appdata/local/com.ayoubdroubi.gitdesktop/bin/gitdesktop-mcp.exe";
         let doc = json!({ "mcpServers": { "gitdesktop": { "command": configured } } });
         let s = classify_global_entry(&doc, LAUNCHER);
         assert!(s.installed);
