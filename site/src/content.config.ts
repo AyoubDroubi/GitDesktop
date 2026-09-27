@@ -28,7 +28,7 @@ const blog = defineCollection({
         description: z.string().min(50).max(160),
         pubDate: z.coerce.date(),
         updatedDate: z.coerce.date().optional(),
-        author: z.string().default("theBGuy"),
+        author: z.string().default("Upstream GitDesktop project"),
         // Required on purpose: a post that fits no pillar is a post that
         // shouldn't ship. The build refuses it. (Editorial gate only —
         // nothing renders the value yet.)
