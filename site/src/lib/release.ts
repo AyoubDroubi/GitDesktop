@@ -17,7 +17,7 @@ import pkg from "../../../package.json";
 // Baked data goes stale between a release and the next site deploy — closed
 // by .github/workflows/site-rebuild.yml (deploy hook on release publish).
 
-const REPO = "theBGuy/GitDesktop";
+const REPO = "AyoubDroubi/GitDesktop";
 
 export interface ReleaseInfo {
   /** e.g. "v0.5.2" */
