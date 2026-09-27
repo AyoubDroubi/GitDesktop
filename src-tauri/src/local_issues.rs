@@ -12,13 +12,13 @@
 //!
 //! The frontend loads the store as `load("local-issues.json", { autoSave: true })`;
 //! `tauri-plugin-store` v2 resolves the relative path against `BaseDirectory::AppData`
-//! (`dirs::data_dir()/<identifier>`), and our identifier is `com.thebguy.gitdesktop`.
+//! (`dirs::data_dir()/<identifier>`), and our identifier is `com.ayoubdroubi.gitdesktop`.
 //! So the file is:
 //!
 //! ```text
-//!   Windows: %APPDATA%\com.thebguy.gitdesktop\local-issues.json
-//!   macOS:   ~/Library/Application Support/com.thebguy.gitdesktop/local-issues.json
-//!   Linux:   $XDG_DATA_HOME (or ~/.local/share)/com.thebguy.gitdesktop/local-issues.json
+//!   Windows: %APPDATA%\com.ayoubdroubi.gitdesktop\local-issues.json
+//!   macOS:   ~/Library/Application Support/com.ayoubdroubi.gitdesktop/local-issues.json
+//!   Linux:   $XDG_DATA_HOME (or ~/.local/share)/com.ayoubdroubi.gitdesktop/local-issues.json
 //! ```
 //!
 //! We resolve it here with the SAME `dirs::data_dir()` the Tauri path layer uses, joined
@@ -476,7 +476,7 @@ mod tests {
     fn store_path_is_under_identifier_and_named() {
         let _serialized = store_dir_lock();
         let path = store_path().unwrap();
-        // …/com.thebguy.gitdesktop/local-issues.json
+        // …/com.ayoubdroubi.gitdesktop/local-issues.json
         assert!(path.ends_with(STORE_FILE), "path: {}", path.display());
         assert!(
             path.to_string_lossy().contains(APP_IDENTIFIER),
