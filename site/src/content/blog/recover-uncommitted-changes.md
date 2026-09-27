@@ -2,7 +2,7 @@
 title: "Recover uncommitted changes after git reset --hard"
 description: "git reset --hard took work you never committed. If you ever staged it, Git kept a blob: how to dig it back out with git fsck and git show."
 pubDate: 2026-09-30
-author: theBGuy
+author: "Upstream GitDesktop project"
 pillar: git-safety
 tags: ["git", "recovery"]
 ogImage: "/og/recover-uncommitted-changes.png"
