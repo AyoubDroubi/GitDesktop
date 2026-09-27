@@ -919,7 +919,7 @@ mod owner_tests {
     fn repo_owner_serializes_to_the_camel_case_wire_shape() {
         let wire = serde_json::to_value(RepoOwner {
             path: "C:/repos/GitDesktop".into(),
-            owner: Some("theBGuy".into()),
+            owner: Some("AyoubDroubi".into()),
             host: Some("github.com".into()),
             provider: Some("github".into()),
             repo_name: Some("GitDesktop".into()),
@@ -1009,8 +1009,8 @@ mod origin_path_tests {
             ),
             (
                 "flat",
-                Some("https://github.com/theBGuy/GitDesktop.git"),
-                origin("github.com", "theBGuy/GitDesktop", "github.com", "github"),
+                Some("https://github.com/AyoubDroubi/GitDesktop.git"),
+                origin("github.com", "AyoubDroubi/GitDesktop", "github.com", "github"),
             ),
             // scp-style ssh: that `:` opens the path, so there is no port to keep.
             (
