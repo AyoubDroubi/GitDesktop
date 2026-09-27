@@ -206,7 +206,7 @@ mod tests {
     /// A real `gh search issues --include-prs --involves=@me --state=open
     /// --limit 3 --json …` response (gh 2.x), structure byte-faithful; the
     /// third-party author logins are stand-ins.
-    const GH_FIXTURE: &str = r#"[{"author":{"id":"U_kgDODHf_mg","is_bot":false,"login":"octo-cat","type":"User","url":"https://github.com/octo-cat"},"isPullRequest":true,"number":309,"repository":{"name":"GitDesktop","nameWithOwner":"theBGuy/GitDesktop"},"title":"feat(settings): accent colour and UI font appearance","updatedAt":"2026-09-05T23:21:02Z","url":"https://github.com/theBGuy/GitDesktop/pull/309"},{"author":{"id":"MDM6Qm90NDk2OTkzMzM=","is_bot":false,"login":"dependabot[bot]","type":"Bot","url":"https://github.com/apps/dependabot"},"isPullRequest":true,"number":300,"repository":{"name":"GitDesktop","nameWithOwner":"theBGuy/GitDesktop"},"title":"chore(deps): bump astro from 6.4.8 to 7.1.6","updatedAt":"2026-09-04T15:30:38Z","url":"https://github.com/theBGuy/GitDesktop/pull/300"},{"author":{"id":"MDQ6VXNlcjY4Nzc1OTU=","is_bot":false,"login":"octo-dev","type":"User","url":"https://github.com/octo-dev"},"isPullRequest":false,"number":262,"repository":{"name":"GitDesktop","nameWithOwner":"theBGuy/GitDesktop"},"title":"feat: Markdown preview view for md files present in diffs","updatedAt":"2026-09-05T07:06:45Z","url":"https://github.com/theBGuy/GitDesktop/issues/262"}]"#;
+    const GH_FIXTURE: &str = r#"[{"author":{"id":"U_kgDODHf_mg","is_bot":false,"login":"octo-cat","type":"User","url":"https://github.com/octo-cat"},"isPullRequest":true,"number":309,"repository":{"name":"GitDesktop","nameWithOwner":"AyoubDroubi/GitDesktop"},"title":"feat(settings): accent colour and UI font appearance","updatedAt":"2026-09-05T23:21:02Z","url":"https://github.com/AyoubDroubi/GitDesktop/pull/309"},{"author":{"id":"MDM6Qm90NDk2OTkzMzM=","is_bot":false,"login":"dependabot[bot]","type":"Bot","url":"https://github.com/apps/dependabot"},"isPullRequest":true,"number":300,"repository":{"name":"GitDesktop","nameWithOwner":"AyoubDroubi/GitDesktop"},"title":"chore(deps): bump astro from 6.4.8 to 7.1.6","updatedAt":"2026-09-04T15:30:38Z","url":"https://github.com/AyoubDroubi/GitDesktop/pull/300"},{"author":{"id":"MDQ6VXNlcjY4Nzc1OTU=","is_bot":false,"login":"octo-dev","type":"User","url":"https://github.com/octo-dev"},"isPullRequest":false,"number":262,"repository":{"name":"GitDesktop","nameWithOwner":"AyoubDroubi/GitDesktop"},"title":"feat: Markdown preview view for md files present in diffs","updatedAt":"2026-09-05T07:06:45Z","url":"https://github.com/AyoubDroubi/GitDesktop/issues/262"}]"#;
 
     /// Both legs are pinned here because each carries a correctness constraint,
     /// not just a preference: without `--sort updated`, gh's best-match default
@@ -279,11 +279,11 @@ mod tests {
                 "number": 309,
                 "title": "feat(settings): accent colour and UI font appearance",
                 "isPullRequest": true,
-                "repoFullName": "theBGuy/GitDesktop",
-                "repoOwner": "theBGuy",
+                "repoFullName": "AyoubDroubi/GitDesktop",
+                "repoOwner": "AyoubDroubi",
                 "repoName": "GitDesktop",
                 "host": "github.com",
-                "url": "https://github.com/theBGuy/GitDesktop/pull/309",
+                "url": "https://github.com/AyoubDroubi/GitDesktop/pull/309",
                 // gh's `…SSZ` is zero-padded to the merge's fixed width.
                 "updatedAt": "2026-09-05T23:21:02.000Z",
                 "authorLogin": "octo-cat",
