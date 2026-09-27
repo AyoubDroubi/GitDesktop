@@ -50,7 +50,7 @@ $ErrorActionPreference = "Stop"
 $repoRoot = Split-Path -Parent $PSScriptRoot
 
 # Tauri app-data dir on Windows = %APPDATA%\<identifier>.
-$dataDir = Join-Path $env:APPDATA "com.thebguy.gitdesktop"
+$dataDir = Join-Path $env:APPDATA "com.ayoubdroubi.gitdesktop"
 
 if ($Reset) {
   $files = Get-ChildItem -Path $dataDir -Filter "coldstart-*.json" -ErrorAction SilentlyContinue
