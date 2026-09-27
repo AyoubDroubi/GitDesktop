@@ -2,7 +2,7 @@
 title: "Will this merge conflict? Find out without merging"
 description: "git merge-tree does the whole merge in memory and names every file that would conflict — without touching your working tree, your index, or your branch."
 pubDate: 2026-07-29
-author: theBGuy
+author: "Upstream GitDesktop project"
 pillar: git-safety
 tags: ["git", "merge", "conflicts"]
 ogImage: "/og/preview-a-merge-before-you-run-it.png"
