@@ -2,7 +2,7 @@
 title: "What FETCH_HEAD is, and why you shouldn't merge it"
 description: "FETCH_HEAD holds whatever the last fetch brought — any fetch, including your editor's. Merge it by name and the branch can swap between your two commands."
 pubDate: 2026-09-09
-author: theBGuy
+author: "Upstream GitDesktop project"
 pillar: git-safety
 tags: ["git", "merge", "recovery"]
 ogImage: "/og/dont-merge-fetch-head.png"
