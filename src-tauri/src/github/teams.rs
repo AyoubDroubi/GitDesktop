@@ -213,7 +213,7 @@ mod tests {
 
     #[test]
     fn a_user_owned_repo_has_no_teams() {
-        assert!(teams_in_org(parse(), "theBGuy").is_empty());
+        assert!(teams_in_org(parse(), "AyoubDroubi").is_empty());
     }
 
     #[test]
