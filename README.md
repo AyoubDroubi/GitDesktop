@@ -7,7 +7,7 @@
 <p align="center"><strong>An AI-native, keyboard-first Git desktop client</strong></p>
 
 <p align="center">
-  <a href="https://github.com/theBGuy/GitDesktop/releases/latest"><img alt="Download the latest release" src="https://img.shields.io/badge/Download-latest_release-4FE0C4?style=flat-square"></a>
+  <a href="https://github.com/AyoubDroubi/GitDesktop/releases/latest"><img alt="Download the latest release" src="https://img.shields.io/badge/Download-latest_release-4FE0C4?style=flat-square"></a>
   <a href="LICENSE"><img alt="License: Apache 2.0" src="https://img.shields.io/badge/license-Apache_2.0-555?style=flat-square"></a>
   <img alt="Platforms: Windows, macOS, Linux" src="https://img.shields.io/badge/platforms-Windows_%7C_macOS_%7C_Linux-555?style=flat-square">
 </p>
@@ -36,12 +36,11 @@ active account per host.
 
 ## Install
 
-**[Download the latest release →](https://github.com/theBGuy/GitDesktop/releases/latest)**
+**[Download the latest release →](https://github.com/AyoubDroubi/GitDesktop/releases/latest)**
 
-Pick the installer for your OS under **Assets**. On macOS you can also install
-with Homebrew: `brew install --cask thebguy/tap/gitdesktop`. Builds are signed
-and keep themselves up to date (see [Updates](#updates)). To build from source
-instead, see [Development](#development).
+Pick the installer for your OS under **Assets**. Release builds for this fork are
+published from this repository. To build from source instead, see
+[Development](#development).
 
 ## Highlights
 
@@ -1334,20 +1333,11 @@ read the [Code of Conduct](CODE_OF_CONDUCT.md). For questions, see
 [SUPPORT.md](.github/SUPPORT.md); to report a vulnerability, follow
 [SECURITY.md](SECURITY.md).
 
-## Sponsor
-
-GitDesktop is free and open source under Apache 2.0. If it earns a place in
-your daily workflow, you can support continued development:
-
-- **[GitHub Sponsors](https://github.com/sponsors/theBGuy)**
-- **[Buy Me a Coffee](https://buymeacoffee.com/theBGuy)**
-
 ## Privacy
 
-GitDesktop never collects your code, file contents, or repository details.
-Optional anonymous usage analytics can be turned off in Settings → General,
-and masked session replay stays off until you opt in. Full details:
-[PRIVACY.md](PRIVACY.md).
+Official builds from this fork do not configure first-party product analytics or
+session recording. External forge and AI integrations run only when you use
+them. Full details: [PRIVACY.md](PRIVACY.md).
 
 ## License
 
