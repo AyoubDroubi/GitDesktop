@@ -2,7 +2,7 @@
 title: "The whole loop, one window: why I built this Git client"
 description: "Pull requests that start before you push, branch updates without switching, and guardrails that aren't a pricing tier — the assumptions behind GitDesktop."
 pubDate: 2026-07-26
-author: theBGuy
+author: "Upstream GitDesktop project"
 pillar: review-loop
 tags: ["git", "workflow", "pull-requests"]
 ogImage: "/og/the-whole-loop-one-window.png"
