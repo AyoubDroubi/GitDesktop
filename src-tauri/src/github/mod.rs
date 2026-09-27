@@ -173,7 +173,7 @@ mod tests {
     #[test]
     fn valid_github_slug_accepts_real_slugs() {
         for slug in [
-            "theBGuy/GitDesktop",
+            "AyoubDroubi/GitDesktop",
             "octo-cat/hello.world_2",
             "a1/b2",
             "user/repo-name.js",
