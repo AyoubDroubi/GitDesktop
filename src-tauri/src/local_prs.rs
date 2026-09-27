@@ -11,7 +11,7 @@
 //! `tauri-plugin-store` v2 resolves a relative store path against
 //! `BaseDirectory::AppData` (its `store.rs::resolve_store_path`), and Tauri's `AppData`
 //! resolver is `dirs::data_dir()/<identifier>` with our identifier
-//! `com.thebguy.gitdesktop` — i.e. `%APPDATA%\com.thebguy.gitdesktop\local-prs.json`
+//! `com.ayoubdroubi.gitdesktop` — i.e. `%APPDATA%\com.ayoubdroubi.gitdesktop\local-prs.json`
 //! on Windows, `~/Library/Application Support/<id>/` on macOS, `$XDG_DATA_HOME/<id>/`
 //! (or `~/.local/share/<id>/`) on Linux. We resolve it here with the SAME
 //! `dirs::data_dir()`, so the two processes always agree on the file. Always the real
@@ -50,7 +50,7 @@ use serde_json::{Map, Value};
 use crate::error::{AppError, AppResult};
 
 /// The Tauri bundle identifier — the app-data subdir the store plugin writes under.
-pub(crate) const APP_IDENTIFIER: &str = "com.thebguy.gitdesktop";
+pub(crate) const APP_IDENTIFIER: &str = "com.ayoubdroubi.gitdesktop";
 /// The store filename (always the real name; the cold-start alias is GUI-only).
 const STORE_FILE: &str = "local-prs.json";
 
