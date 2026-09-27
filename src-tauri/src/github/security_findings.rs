@@ -1355,7 +1355,7 @@ mod tests {
                 "vulnerable_version_range": "< 4.12.34",
                 "first_patched_version": first_patched
             },
-            "html_url": "https://github.com/theBGuy/GitDesktop/security/dependabot/29",
+            "html_url": "https://github.com/AyoubDroubi/GitDesktop/security/dependabot/29",
             "created_at": "2026-08-04T04:32:12Z",
             "updated_at": "2026-08-04T04:32:12Z"
         })
@@ -1384,7 +1384,7 @@ mod tests {
         assert_eq!(out.first_patched_version.as_deref(), Some("4.12.34"));
         assert_eq!(
             out.html_url,
-            "https://github.com/theBGuy/GitDesktop/security/dependabot/29"
+            "https://github.com/AyoubDroubi/GitDesktop/security/dependabot/29"
         );
         assert_eq!(out.created_at, "2026-08-04T04:32:12Z");
         assert_eq!(out.updated_at, "2026-08-04T04:32:12Z");
@@ -1527,7 +1527,7 @@ mod tests {
                     "cwes": [],
                     "vulnerableVersionRange": "< 4.12.34",
                     "firstPatchedVersion": "4.12.34",
-                    "htmlUrl": "https://github.com/theBGuy/GitDesktop/security/dependabot/29",
+                    "htmlUrl": "https://github.com/AyoubDroubi/GitDesktop/security/dependabot/29",
                     "createdAt": "2026-08-04T04:32:12Z",
                     "updatedAt": "2026-08-04T04:32:12Z"
                 }]
@@ -2185,7 +2185,7 @@ mod tests {
                 },
                 "classifications": ["library"]
             },
-            "html_url": "https://github.com/theBGuy/GitDesktop/security/code-scanning/4",
+            "html_url": "https://github.com/AyoubDroubi/GitDesktop/security/code-scanning/4",
             "created_at": "2026-08-04T12:29:18Z",
             "updated_at": "2026-08-05T12:29:18Z"
         })
@@ -2215,7 +2215,7 @@ mod tests {
         assert_eq!(out.git_ref.as_deref(), Some("refs/heads/main"));
         assert_eq!(
             out.html_url,
-            "https://github.com/theBGuy/GitDesktop/security/code-scanning/4"
+            "https://github.com/AyoubDroubi/GitDesktop/security/code-scanning/4"
         );
         assert_eq!(out.created_at, "2026-08-04T12:29:18Z");
         assert_eq!(out.updated_at, "2026-08-05T12:29:18Z");
@@ -2245,7 +2245,7 @@ mod tests {
             "validity": "active",
             "publicly_leaked": true,
             "multi_repo": false,
-            "html_url": "https://github.com/theBGuy/GitDesktop/security/secret-scanning/2",
+            "html_url": "https://github.com/AyoubDroubi/GitDesktop/security/secret-scanning/2",
             "created_at": "2026-08-04T18:18:30Z",
             "updated_at": "2026-08-05T18:18:30Z"
         })
@@ -2264,7 +2264,7 @@ mod tests {
         assert_eq!(out.publicly_leaked, Some(true));
         assert_eq!(
             out.html_url,
-            "https://github.com/theBGuy/GitDesktop/security/secret-scanning/2"
+            "https://github.com/AyoubDroubi/GitDesktop/security/secret-scanning/2"
         );
         assert_eq!(out.created_at, "2026-08-04T18:18:30Z");
         assert_eq!(out.updated_at, "2026-08-05T18:18:30Z");
@@ -2312,7 +2312,7 @@ mod tests {
                     "message": "This path depends on a user-provided value.",
                     // A Rust keyword on the wire: the key must stay literally "ref".
                     "ref": "refs/heads/main",
-                    "htmlUrl": "https://github.com/theBGuy/GitDesktop/security/code-scanning/4",
+                    "htmlUrl": "https://github.com/AyoubDroubi/GitDesktop/security/code-scanning/4",
                     "createdAt": "2026-08-04T12:29:18Z",
                     "updatedAt": "2026-08-05T12:29:18Z"
                 }]
@@ -2345,7 +2345,7 @@ mod tests {
                     "secretTypeDisplayName": "Adafruit IO Key",
                     "validity": "active",
                     "publiclyLeaked": true,
-                    "htmlUrl": "https://github.com/theBGuy/GitDesktop/security/secret-scanning/2",
+                    "htmlUrl": "https://github.com/AyoubDroubi/GitDesktop/security/secret-scanning/2",
                     "createdAt": "2026-08-04T18:18:30Z",
                     "updatedAt": "2026-08-05T18:18:30Z"
                 }]
