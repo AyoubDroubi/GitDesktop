@@ -18,7 +18,7 @@ not legal advice.
 GitDesktop is open-source software licensed under the **Apache License 2.0**.
 That license, not this page, governs your rights to use, copy, modify, and
 distribute the software, and it controls in any conflict with these terms. A copy
-ships with the app and is in the [project repository](https://github.com/theBGuy/GitDesktop).
+ships with the app and is in the [project repository](https://github.com/AyoubDroubi/GitDesktop).
 
 ## No warranty
 
@@ -59,4 +59,4 @@ use after a change means you accept it.
 
 ## Contact
 
-Questions about these terms: thebguy.github@gmail.com.
+Questions about these terms: ayoub.al.droubi@gmail.com.
