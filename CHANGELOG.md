@@ -1179,7 +1179,7 @@ under `changelog.d/` (see its README); those are assembled here at release time 
   access, offers **Open security settings** to turn it on.
 - **Install with Homebrew on macOS.** GitDesktop is now on a Homebrew tap, so a
   single command puts it on your Mac — no download-and-drag:
-  `brew install --cask thebguy/tap/gitdesktop`.
+  `brew install --cask ayoubdroubi/tap/gitdesktop`.
 - **macOS menu bar.** The **File** menu now opens repositories the way the rest
   of the app does — **New Repository…**, **Open Repository…**, **Clone
   Repository…**, and an **Open Recent** submenu of your last ten repos — and
@@ -3903,32 +3903,32 @@ built on Tauri 2; every GitHub feature runs through the GitHub CLI (`gh`).
 - Diff-renderer exceptions are caught by an error boundary instead of taking
   down the whole app.
 
-[Unreleased]: https://github.com/theBGuy/GitDesktop/compare/v0.12.2...HEAD
-[0.12.2]: https://github.com/theBGuy/GitDesktop/compare/v0.12.1...v0.12.2
-[0.12.1]: https://github.com/theBGuy/GitDesktop/compare/v0.12.0...v0.12.1
-[0.12.0]: https://github.com/theBGuy/GitDesktop/compare/v0.11.1...v0.12.0
-[0.11.1]: https://github.com/theBGuy/GitDesktop/compare/v0.11.0...v0.11.1
-[0.11.0]: https://github.com/theBGuy/GitDesktop/compare/v0.10.0...v0.11.0
-[0.10.0]: https://github.com/theBGuy/GitDesktop/compare/v0.9.6...v0.10.0
-[0.9.6]: https://github.com/theBGuy/GitDesktop/compare/v0.9.5...v0.9.6
-[0.9.5]: https://github.com/theBGuy/GitDesktop/compare/v0.9.4...v0.9.5
-[0.9.4]: https://github.com/theBGuy/GitDesktop/compare/v0.9.3...v0.9.4
-[0.9.3]: https://github.com/theBGuy/GitDesktop/compare/v0.9.2...v0.9.3
-[0.9.2]: https://github.com/theBGuy/GitDesktop/compare/v0.9.1...v0.9.2
-[0.9.1]: https://github.com/theBGuy/GitDesktop/compare/v0.9.0...v0.9.1
-[0.9.0]: https://github.com/theBGuy/GitDesktop/compare/v0.8.0...v0.9.0
-[0.8.0]: https://github.com/theBGuy/GitDesktop/compare/v0.7.0...v0.8.0
-[0.7.0]: https://github.com/theBGuy/GitDesktop/compare/v0.6.1...v0.7.0
-[0.6.1]: https://github.com/theBGuy/GitDesktop/compare/v0.6.0...v0.6.1
-[0.6.0]: https://github.com/theBGuy/GitDesktop/compare/v0.5.2...v0.6.0
-[0.5.2]: https://github.com/theBGuy/GitDesktop/compare/v0.5.1...v0.5.2
-[0.5.1]: https://github.com/theBGuy/GitDesktop/compare/v0.5.0...v0.5.1
-[0.5.0]: https://github.com/theBGuy/GitDesktop/compare/v0.4.0...v0.5.0
-[0.4.0]: https://github.com/theBGuy/GitDesktop/compare/v0.3.1...v0.4.0
-[0.3.1]: https://github.com/theBGuy/GitDesktop/compare/v0.3.0...v0.3.1
-[0.3.0]: https://github.com/theBGuy/GitDesktop/compare/v0.2.3...v0.3.0
-[0.2.3]: https://github.com/theBGuy/GitDesktop/compare/v0.2.2...v0.2.3
-[0.2.2]: https://github.com/theBGuy/GitDesktop/compare/v0.2.1...v0.2.2
-[0.2.1]: https://github.com/theBGuy/GitDesktop/compare/v0.2.0...v0.2.1
-[0.2.0]: https://github.com/theBGuy/GitDesktop/compare/v0.1.0...v0.2.0
-[0.1.0]: https://github.com/theBGuy/GitDesktop/releases/tag/v0.1.0
+[Unreleased]: https://github.com/AyoubDroubi/GitDesktop/compare/v0.12.2...HEAD
+[0.12.2]: https://github.com/AyoubDroubi/GitDesktop/compare/v0.12.1...v0.12.2
+[0.12.1]: https://github.com/AyoubDroubi/GitDesktop/compare/v0.12.0...v0.12.1
+[0.12.0]: https://github.com/AyoubDroubi/GitDesktop/compare/v0.11.1...v0.12.0
+[0.11.1]: https://github.com/AyoubDroubi/GitDesktop/compare/v0.11.0...v0.11.1
+[0.11.0]: https://github.com/AyoubDroubi/GitDesktop/compare/v0.10.0...v0.11.0
+[0.10.0]: https://github.com/AyoubDroubi/GitDesktop/compare/v0.9.6...v0.10.0
+[0.9.6]: https://github.com/AyoubDroubi/GitDesktop/compare/v0.9.5...v0.9.6
+[0.9.5]: https://github.com/AyoubDroubi/GitDesktop/compare/v0.9.4...v0.9.5
+[0.9.4]: https://github.com/AyoubDroubi/GitDesktop/compare/v0.9.3...v0.9.4
+[0.9.3]: https://github.com/AyoubDroubi/GitDesktop/compare/v0.9.2...v0.9.3
+[0.9.2]: https://github.com/AyoubDroubi/GitDesktop/compare/v0.9.1...v0.9.2
+[0.9.1]: https://github.com/AyoubDroubi/GitDesktop/compare/v0.9.0...v0.9.1
+[0.9.0]: https://github.com/AyoubDroubi/GitDesktop/compare/v0.8.0...v0.9.0
+[0.8.0]: https://github.com/AyoubDroubi/GitDesktop/compare/v0.7.0...v0.8.0
+[0.7.0]: https://github.com/AyoubDroubi/GitDesktop/compare/v0.6.1...v0.7.0
+[0.6.1]: https://github.com/AyoubDroubi/GitDesktop/compare/v0.6.0...v0.6.1
+[0.6.0]: https://github.com/AyoubDroubi/GitDesktop/compare/v0.5.2...v0.6.0
+[0.5.2]: https://github.com/AyoubDroubi/GitDesktop/compare/v0.5.1...v0.5.2
+[0.5.1]: https://github.com/AyoubDroubi/GitDesktop/compare/v0.5.0...v0.5.1
+[0.5.0]: https://github.com/AyoubDroubi/GitDesktop/compare/v0.4.0...v0.5.0
+[0.4.0]: https://github.com/AyoubDroubi/GitDesktop/compare/v0.3.1...v0.4.0
+[0.3.1]: https://github.com/AyoubDroubi/GitDesktop/compare/v0.3.0...v0.3.1
+[0.3.0]: https://github.com/AyoubDroubi/GitDesktop/compare/v0.2.3...v0.3.0
+[0.2.3]: https://github.com/AyoubDroubi/GitDesktop/compare/v0.2.2...v0.2.3
+[0.2.2]: https://github.com/AyoubDroubi/GitDesktop/compare/v0.2.1...v0.2.2
+[0.2.1]: https://github.com/AyoubDroubi/GitDesktop/compare/v0.2.0...v0.2.1
+[0.2.0]: https://github.com/AyoubDroubi/GitDesktop/compare/v0.1.0...v0.2.0
+[0.1.0]: https://github.com/AyoubDroubi/GitDesktop/releases/tag/v0.1.0
