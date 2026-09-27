@@ -1,6 +1,6 @@
 use crate::error::{AppError, AppResult};
 
-const SERVICE: &str = "com.thebguy.gitdesktop";
+const SERVICE: &str = "com.ayoubdroubi.gitdesktop";
 const KNOWN_PROVIDERS: &[&str] = &[
     "anthropic",
     "openai",
