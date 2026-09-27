@@ -4832,9 +4832,9 @@ mod tests {
         assert_eq!(remote_path("ssh://git@gitlab.com/group/repo.git").as_deref(), Some("group/repo"));
         // GitHub `owner/repo` slug (what `gh_origin_slug` passes to `gh -R`),
         // in https and scp forms with and without `.git`.
-        assert_eq!(remote_path("https://github.com/theBGuy/biome.git").as_deref(), Some("theBGuy/biome"));
-        assert_eq!(remote_path("git@github.com:theBGuy/biome.git").as_deref(), Some("theBGuy/biome"));
-        assert_eq!(remote_path("https://github.com/theBGuy/biome").as_deref(), Some("theBGuy/biome"));
+        assert_eq!(remote_path("https://github.com/AyoubDroubi/biome.git").as_deref(), Some("AyoubDroubi/biome"));
+        assert_eq!(remote_path("git@github.com:AyoubDroubi/biome.git").as_deref(), Some("AyoubDroubi/biome"));
+        assert_eq!(remote_path("https://github.com/AyoubDroubi/biome").as_deref(), Some("AyoubDroubi/biome"));
         // host only → no path.
         assert_eq!(remote_path("https://gitlab.com"), None);
         assert_eq!(remote_path("/local/path"), None);
@@ -4870,17 +4870,17 @@ mod tests {
     fn web_repo_url_derives_a_browser_link_from_any_remote_form() {
         // https, with and without `.git`.
         assert_eq!(
-            web_repo_url("https://github.com/theBGuy/biome.git").as_deref(),
-            Some("https://github.com/theBGuy/biome"),
+            web_repo_url("https://github.com/AyoubDroubi/biome.git").as_deref(),
+            Some("https://github.com/AyoubDroubi/biome"),
         );
         assert_eq!(
-            web_repo_url("https://github.com/theBGuy/biome").as_deref(),
-            Some("https://github.com/theBGuy/biome"),
+            web_repo_url("https://github.com/AyoubDroubi/biome").as_deref(),
+            Some("https://github.com/AyoubDroubi/biome"),
         );
         // scp-style ssh.
         assert_eq!(
-            web_repo_url("git@github.com:theBGuy/biome.git").as_deref(),
-            Some("https://github.com/theBGuy/biome"),
+            web_repo_url("git@github.com:AyoubDroubi/biome.git").as_deref(),
+            Some("https://github.com/AyoubDroubi/biome"),
         );
         // `ssh://` scheme.
         assert_eq!(
