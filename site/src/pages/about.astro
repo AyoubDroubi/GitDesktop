@@ -14,8 +14,8 @@ const founderEssay = await getRequiredPost(
 );
 
 const base = import.meta.env.BASE_URL;
-const repo = "https://github.com/theBGuy/GitDesktop";
-const profile = "https://github.com/theBGuy";
+const repo = "https://github.com/AyoubDroubi/GitDesktop";
+const profile = "https://github.com/AyoubDroubi";
 const download = `${base}download/`;
 
 const principles: { term: string; note: string; ai?: boolean }[] = [
@@ -75,7 +75,7 @@ const record = [
   description="Who builds GitDesktop, why it exists, and the record behind it: open source under Apache-2.0, local-first, with optional AI you can hide."
   ogTitle="About GitDesktop"
   breadcrumbs={[{ name: "About", path: "/about/" }]}
-  person={{ name: "theBGuy", sameAs: [profile] }}
+  person={{ name: "Ayoub Droubi", sameAs: [profile] }}
 >
   <!-- Hero -->
   <section class="border-b border-line">
@@ -93,7 +93,7 @@ const record = [
         style="transition-delay:120ms"
         class="mt-6 max-w-[58ch] text-base leading-relaxed text-body sm:text-lg"
       >
-        GitDesktop is built by one person, in the open.
+        This repository is a customized GitDesktop fork maintained independently.
       </p>
     </div>
   </section>
@@ -113,7 +113,7 @@ const record = [
         <p class="mt-6 text-sm">
           <a
             href={postUrl(founderEssay)}
-            class="text-mint underline-offset-4 hover:underline">Why I built this →</a
+            class="text-mint underline-offset-4 hover:underline">Upstream design notes →</a
           >
         </p>
       </div>
@@ -124,23 +124,22 @@ const record = [
   <section class="border-b border-line bg-surface/30">
     <div class="mx-auto max-w-6xl px-5 py-16 md:py-20">
       <div data-reveal class="max-w-2xl">
-        <h2 class="text-2xl tracking-[-0.02em] sm:text-3xl">Who makes it</h2>
+        <h2 class="text-2xl tracking-[-0.02em] sm:text-3xl">Who maintains this fork</h2>
         <p class="mt-6 max-w-[62ch] leading-relaxed text-body">
-          I'm <span class="text-ink">theBGuy</span>. I make developer tools.
-          For the past few years I've been a founding or lead engineer at
-          early-stage startups, and along the way I've contributed to Biome,
-          the toolchain this codebase lints with.
+          This customized fork is maintained by <span class="text-ink">Ayoub Droubi</span>.
+          The original GitDesktop project remains credited through the Apache-2.0
+          license and NOTICE file.
         </p>
         <p class="mt-4 max-w-[62ch] leading-relaxed text-body">
-          GitDesktop (Rust, Tauri, React) is my biggest solo project, and I
-          build it with itself: every change I write is reviewed in the app
-          before it merges.
+          This fork keeps the original Rust, Tauri, and React architecture while adapting
+          ownership, release infrastructure, privacy defaults, and workflow details
+          for this repository.
         </p>
         <p class="mt-6 max-w-[62ch] text-sm leading-relaxed text-muted">
           Find me on
           <a href={profile} class="text-mint underline-offset-4 hover:underline">GitHub</a>,
           or email
-          <a href="mailto:thebguy.github@gmail.com" class="text-mint underline-offset-4 hover:underline">thebguy.github@gmail.com</a>.
+          <a href="mailto:ayoub.al.droubi@gmail.com" class="text-mint underline-offset-4 hover:underline">ayoub.al.droubi@gmail.com</a>.
         </p>
       </div>
     </div>
@@ -222,8 +221,7 @@ const record = [
         The rest is in the app.
       </h2>
       <p data-reveal style="transition-delay:80ms" class="mx-auto mt-5 max-w-[48ch] leading-relaxed text-body">
-        Free, open source, and local — built by the person who answers the
-        issues.
+        Free, open source, and local — maintained as a customized fork.
       </p>
       <div data-reveal style="transition-delay:140ms" class="mt-8 flex flex-wrap items-center justify-center gap-3">
         <a href={download} class="rounded-lg bg-mint px-6 py-3 font-medium text-mint-ink transition-opacity hover:opacity-90">
