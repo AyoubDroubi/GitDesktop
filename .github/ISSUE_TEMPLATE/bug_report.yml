@@ -10,14 +10,14 @@ body:
         so we can reproduce and fix it quickly.
 
         **App crashed, or showed no error at all?**
-        [TROUBLESHOOTING.md](https://github.com/theBGuy/GitDesktop/blob/master/TROUBLESHOOTING.md)
+        [TROUBLESHOOTING.md](https://github.com/AyoubDroubi/GitDesktop/blob/master/TROUBLESHOOTING.md)
         covers where each platform records the crash, and how to open DevTools on a
         release build.
 
         **Not a bug?** Use the [feature request](?template=feature_request.yml)
-        form for ideas, or [Discussions](https://github.com/theBGuy/GitDesktop/discussions)
+        form for ideas, or [Discussions](https://github.com/AyoubDroubi/GitDesktop/discussions)
         for questions. **Found a security vulnerability?** Do not file it here —
-        follow [SECURITY.md](https://github.com/theBGuy/GitDesktop/blob/master/SECURITY.md).
+        follow [SECURITY.md](https://github.com/AyoubDroubi/GitDesktop/blob/master/SECURITY.md).
 
   - type: textarea
     id: description
@@ -105,7 +105,7 @@ body:
       description: >-
         Paste any errors or attach media. Please redact tokens, secrets, and private paths.
         If the app closed by itself, see
-        [TROUBLESHOOTING.md](https://github.com/theBGuy/GitDesktop/blob/master/TROUBLESHOOTING.md)
+        [TROUBLESHOOTING.md](https://github.com/AyoubDroubi/GitDesktop/blob/master/TROUBLESHOOTING.md)
         for the crash log on your platform.
     validations:
       required: false
