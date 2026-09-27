@@ -27,7 +27,7 @@ export interface Release {
   categories: ReleaseCategory[];
 }
 
-const REPO = "https://github.com/theBGuy/GitDesktop";
+const REPO = "https://github.com/AyoubDroubi/GitDesktop";
 
 function escapeHtml(s: string): string {
   return s
