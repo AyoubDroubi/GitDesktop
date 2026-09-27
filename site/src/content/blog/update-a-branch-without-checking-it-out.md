@@ -2,7 +2,7 @@
 title: "Update a Git branch without checking it out"
 description: "git fetch origin main:main moves a branch while you stay on another. The refspec that does it, the refusals that protect you, and the diverged case."
 pubDate: 2026-08-12
-author: theBGuy
+author: "Upstream GitDesktop project"
 pillar: git-safety
 tags: ["git", "branches", "workflow"]
 ogImage: "/og/update-a-branch-without-checking-it-out.png"
