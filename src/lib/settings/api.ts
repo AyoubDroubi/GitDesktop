@@ -408,7 +408,7 @@ export interface AppSettings {
   fetchLinkPreviews: boolean;
   /** First-run nudge toward the user guide; set once the user opens or dismisses it. */
   seenGuideNudge: boolean;
-  /** Send anonymous usage events to PostHog. Default on (opt-out). */
+  /** Send anonymous usage events to PostHog. Default off. */
   analyticsEnabled: boolean;
   /** Record masked session replays. Default off (opt-in, for GDPR/ePrivacy). */
   recordReplay: boolean;
@@ -516,7 +516,7 @@ export const DEFAULT_SETTINGS: AppSettings = {
   createPrsAsDraft: false,
   fetchLinkPreviews: true,
   seenGuideNudge: false,
-  analyticsEnabled: true,
+  analyticsEnabled: false,
   recordReplay: false,
   seenAnalyticsNotice: false,
   lastSeenVersion: "",
