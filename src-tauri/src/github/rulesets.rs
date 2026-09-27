@@ -451,9 +451,9 @@ mod tests {
 
     #[test]
     fn reads_the_contexts_of_a_live_rules_response() {
-        // Verbatim `gh api repos/theBGuy/GitDesktop/rules/branches/master`, so the
+        // Verbatim `gh api repos/AyoubDroubi/GitDesktop/rules/branches/master`, so the
         // parser is pinned against the shape the endpoint actually returns.
-        let raw = r#"[{"type":"required_status_checks","parameters":{"strict_required_status_checks_policy":false,"do_not_enforce_on_create":false,"required_status_checks":[{"context":"build"},{"context":"fragment"}]},"ruleset_source_type":"Repository","ruleset_source":"theBGuy/GitDesktop","ruleset_id":20332127}]"#;
+        let raw = r#"[{"type":"required_status_checks","parameters":{"strict_required_status_checks_policy":false,"do_not_enforce_on_create":false,"required_status_checks":[{"context":"build"},{"context":"fragment"}]},"ruleset_source_type":"Repository","ruleset_source":"AyoubDroubi/GitDesktop","ruleset_id":20332127}]"#;
         assert_eq!(contexts(raw), vec!["build", "fragment"]);
     }
 
@@ -535,7 +535,7 @@ mod tests {
 
     #[test]
     fn names_each_app_reporting_a_check_once() {
-        // Trimmed from `gh api repos/theBGuy/GitDesktop/commits/master/check-runs`:
+        // Trimmed from `gh api repos/AyoubDroubi/GitDesktop/commits/master/check-runs`:
         // one app reports every leg of a matrix job, so it must be named once.
         let raw = r#"{"total_count":8,"check_runs":[
             {"name":"Cloudflare Pages","app":{"id":85455,"name":"Cloudflare Workers and Pages","slug":"cloudflare-workers-and-pages"}},
