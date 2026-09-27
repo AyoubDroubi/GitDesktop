@@ -14,7 +14,7 @@
 //!
 //! `opslog.json` is resolved with the SAME `dirs::data_dir()` the Tauri path layer
 //! uses, joined with the bundle identifier (mirroring `local_prs.rs`):
-//! `%APPDATA%\com.thebguy.gitdesktop\` on Windows, `~/Library/Application
+//! `%APPDATA%\com.ayoubdroubi.gitdesktop\` on Windows, `~/Library/Application
 //! Support/<id>/` on macOS, `$XDG_DATA_HOME/<id>/` (or `~/.local/share/<id>/`) on Linux.
 //!
 //! ## Value-based round-trip (never drop unknown fields)
@@ -46,7 +46,7 @@ use serde_json::{Map, Value};
 use crate::error::{AppError, AppResult};
 
 /// The Tauri bundle identifier — the app-data subdir the store writes under.
-const APP_IDENTIFIER: &str = "com.thebguy.gitdesktop";
+const APP_IDENTIFIER: &str = "com.ayoubdroubi.gitdesktop";
 /// The store filename.
 const STORE_FILE: &str = "opslog.json";
 /// Keep at most this many entries per repo (never evicting a `"pending"` or
