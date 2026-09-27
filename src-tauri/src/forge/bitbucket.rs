@@ -6116,8 +6116,8 @@ mod tests {
         }
 
         for (tag, remote) in [
-            ("https", "https://bitbucket.org/thebguy1/dispatch-demo.git"),
-            ("scp", "git@bitbucket.org:thebguy1/dispatch-demo.git"),
+            ("https", "https://bitbucket.org/ayoubdroubi1/dispatch-demo.git"),
+            ("scp", "git@bitbucket.org:ayoubdroubi1/dispatch-demo.git"),
         ] {
             let dir = tempfile::Builder::new()
                 .prefix(&format!("gd-bb-repo-url-{tag}-"))
@@ -6130,7 +6130,7 @@ mod tests {
             run(&repo_s, &["remote", "add", "origin", remote]).await;
             assert_eq!(
                 repo_url(&repo_s).await.unwrap(),
-                "https://bitbucket.org/thebguy1/dispatch-demo"
+                "https://bitbucket.org/ayoubdroubi1/dispatch-demo"
             );
         }
     }
