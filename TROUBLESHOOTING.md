@@ -1,7 +1,7 @@
 # Troubleshooting
 
 How to collect diagnostics when GitDesktop misbehaves, so a
-[bug report](https://github.com/theBGuy/GitDesktop/issues/new?template=bug_report.yml)
+[bug report](https://github.com/AyoubDroubi/GitDesktop/issues/new?template=bug_report.yml)
 has something to work from. Everything here applies to a normal installed release; none
 of it needs a development setup.
 
@@ -109,7 +109,7 @@ unexpectedly.
 
 ## Filing the report
 
-Open a [bug report](https://github.com/theBGuy/GitDesktop/issues/new?template=bug_report.yml)
+Open a [bug report](https://github.com/AyoubDroubi/GitDesktop/issues/new?template=bug_report.yml)
 with the version from Settings → About, your operating system, the steps that trigger
 it, and whichever diagnostic above applied. Security vulnerabilities go through
 [SECURITY.md](SECURITY.md) instead.
