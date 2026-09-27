@@ -50,7 +50,7 @@ pub fn run() {
     // running automations double-post (duplicate-AI-review incident, 2026-07-10;
     // the store plugin caches app-data per process, so instances can't dedup
     // through the store). Dev is exempt on purpose: the lock keys on the shared
-    // `com.thebguy.gitdesktop` identifier, and dev+prod / two dev builds
+    // `com.ayoubdroubi.gitdesktop` identifier, and dev+prod / two dev builds
     // (parallel-worktree testing) must keep coexisting. Keep this the FIRST
     // plugin registered so the check runs before any other init. The second
     // launch's argv/cwd are intentionally dropped: v1 is focus-only, and no
