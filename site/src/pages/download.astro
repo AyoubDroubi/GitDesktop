@@ -9,7 +9,7 @@ import {
 } from "../lib/release";
 
 const base = import.meta.env.BASE_URL;
-const repo = "https://github.com/theBGuy/GitDesktop";
+const repo = "https://github.com/AyoubDroubi/GitDesktop";
 const releases = `${repo}/releases`;
 
 // Release facts are baked at build time (lib/release.ts: guarded live fetch,
@@ -37,8 +37,7 @@ const buildTargets: {
     os: "macOS",
     detail: ".dmg · Apple Silicon & Intel (universal)",
     suffix: ".dmg",
-    cmd: "brew install --cask thebguy/tap/gitdesktop",
-  },
+      },
   {
     id: "dl-linux-appimage",
     os: "Linux",
@@ -86,16 +85,16 @@ const softwareLd = JSON.stringify({
   // Only from live data — the fallback's package.json version can be ahead of
   // the published release during the release:prepare window.
   ...(rel.live && { softwareVersion: rel.version }),
-  downloadUrl: "https://gitdesktop.app/download/",
+  downloadUrl: `${repo}/releases`,
   license: "https://www.apache.org/licenses/LICENSE-2.0",
-  url: "https://gitdesktop.app/",
-  sameAs: "https://github.com/theBGuy/GitDesktop",
+  url: repo,
+  sameAs: repo,
 }).replace(/</g, "\\u003c");
 ---
 
 <SiteLayout
   title="Download GitDesktop for Windows, macOS & Linux"
-  description="Free, open-source native builds of GitDesktop for Windows, macOS, and Linux — installer, .dmg (or Homebrew), AppImage, .deb and .rpm, with signed auto-updates."
+  description="Free, open-source native builds of GitDesktop for Windows, macOS, and Linux — installer, .dmg, AppImage, .deb and .rpm, with signed auto-updates."
   ogTitle="Download GitDesktop"
   ogDescription="Free and open source, for Windows, macOS and Linux."
   breadcrumbs={[{ name: "Download", path: "/download/" }]}
@@ -242,7 +241,7 @@ const softwareLd = JSON.stringify({
     // release and point each button at its matching asset. The baked build-time
     // links keep working if this never runs (no JS, rate-limited, offline).
     (function () {
-      var OWNER = "theBGuy";
+      var OWNER = "AyoubDroubi";
       var REPO = "GitDesktop";
       var ua = navigator.userAgent || "";
       var plat =
