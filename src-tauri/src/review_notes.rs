@@ -15,13 +15,13 @@
 //! ## Storage-dir mirroring contract
 //!
 //! `tauri-plugin-store` v2 resolves a relative store path against `BaseDirectory::AppData`
-//! (`dirs::data_dir()/<identifier>`), and our identifier is `com.thebguy.gitdesktop`. So the
+//! (`dirs::data_dir()/<identifier>`), and our identifier is `com.ayoubdroubi.gitdesktop`. So the
 //! file is:
 //!
 //! ```text
-//!   Windows: %APPDATA%\com.thebguy.gitdesktop\review-notes.json
-//!   macOS:   ~/Library/Application Support/com.thebguy.gitdesktop/review-notes.json
-//!   Linux:   $XDG_DATA_HOME (or ~/.local/share)/com.thebguy.gitdesktop/review-notes.json
+//!   Windows: %APPDATA%\com.ayoubdroubi.gitdesktop\review-notes.json
+//!   macOS:   ~/Library/Application Support/com.ayoubdroubi.gitdesktop/review-notes.json
+//!   Linux:   $XDG_DATA_HOME (or ~/.local/share)/com.ayoubdroubi.gitdesktop/review-notes.json
 //! ```
 //!
 //! We resolve it here with the SAME `dirs::data_dir()` the Tauri path layer uses, joined with
@@ -384,7 +384,7 @@ mod tests {
             std::env::temp_dir().join("gd-review-notes-test")
         );
         // 3. No override + non-test → the real app-data dir, so the production path
-        //    stays …/com.thebguy.gitdesktop/review-notes.json, unchanged by the seam.
+        //    stays …/com.ayoubdroubi.gitdesktop/review-notes.json, unchanged by the seam.
         let real = resolve_store_base(None, false).unwrap();
         assert_eq!(real, dirs::data_dir().unwrap().join(APP_IDENTIFIER));
     }
