@@ -2,7 +2,7 @@
 title: "Recovering a dropped stash: what git fsck can still find"
 description: "A dropped or lost git stash is almost never gone. How to find it with git fsck, tell the real stash commit from its index twin, and get the work back."
 pubDate: 2026-07-25
-author: theBGuy
+author: "Upstream GitDesktop project"
 pillar: git-safety
 tags: ["git", "recovery", "stash"]
 ogImage: "/og/recover-a-dropped-git-stash.png"
