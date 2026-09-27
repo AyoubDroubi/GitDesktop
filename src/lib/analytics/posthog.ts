@@ -6,7 +6,7 @@ import { COLD_START, storeName } from "@/lib/test-mode";
  * Public privacy-policy URL. Set this once the policy is hosted; the UI hides
  * the link while it's empty so we never ship a dead link.
  */
-export const PRIVACY_POLICY_URL = "https://gitdesktop.app/privacy";
+export const PRIVACY_POLICY_URL = "https://github.com/AyoubDroubi/GitDesktop/blob/master/PRIVACY.md";
 
 let initialized = false;
 // posthog-js (~190KB) is imported lazily on first init so it stays off the boot
