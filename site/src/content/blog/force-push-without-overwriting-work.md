@@ -2,7 +2,7 @@
 title: "Force push without overwriting your teammate's work"
 description: "git push --force-with-lease protects you only until something fetches. The gap, demonstrated live, and the flag that closes it: --force-if-includes."
 pubDate: 2026-08-26
-author: theBGuy
+author: "Upstream GitDesktop project"
 pillar: git-safety
 tags: ["git", "force-push", "workflow"]
 ogImage: "/og/force-push-without-overwriting-work.png"
