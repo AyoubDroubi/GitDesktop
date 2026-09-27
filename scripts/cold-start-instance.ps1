@@ -19,7 +19,7 @@
 
   -Id, -DebugPort and -DataRoot must be unique across every cold instance running on
   the MACHINE, whichever worktree built it. All builds share the app identifier, so
-  they all write %APPDATA%\com.thebguy.gitdesktop: two worktrees each launching
+  they all write %APPDATA%\com.ayoubdroubi.gitdesktop: two worktrees each launching
   `-Id a` land in the same coldstart-a-*.json files and clobber each other.
 
   The exe must belong to a COLD-START Vite server. Cold start is a build-time Vite
