@@ -2,7 +2,7 @@
 title: "Undo a hard reset: how far the reflog reaches"
 description: "git reset --hard didn't destroy your commits. How to read the reflog, point a branch back at lost work, and know where the journal has holes."
 pubDate: 2026-09-23
-author: theBGuy
+author: "Upstream GitDesktop project"
 pillar: git-safety
 tags: ["git", "recovery", "reflog"]
 ogImage: "/og/undo-a-hard-reset.png"
