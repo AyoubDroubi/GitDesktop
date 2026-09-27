@@ -2,7 +2,7 @@
 title: "git pull --rebase deleted your commit: the rescue and the reason"
 description: "A force-pushed branch plus git pull --rebase silently drops commits you pushed. The reflog rescue, the fork-point mechanism, and why no flag prevents it."
 pubDate: 2026-09-02
-author: theBGuy
+author: "Upstream GitDesktop project"
 pillar: git-safety
 tags: ["git", "rebase", "recovery"]
 ogImage: "/og/pull-rebase-deleted-your-commit.png"
