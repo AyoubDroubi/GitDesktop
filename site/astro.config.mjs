@@ -39,16 +39,14 @@ function rehypeTableWrap() {
   return (tree) => wrap(tree);
 }
 
-// Served on Cloudflare Pages at the apex domain https://gitdesktop.app/.
-// (Previously GitHub Pages at https://thebguy.github.io/GitDesktop/ — if you
-// move back, set `site: "https://thebguy.github.io"` and `base: "/GitDesktop/"`.)
+// Default site metadata for this customized fork. Publishing is optional.
 // site/package.json declares Vite explicitly so @tailwindcss/vite's peer
 // resolves to the same major Astro itself builds with (8, since Astro 7).
 export default defineConfig({
-  site: "https://gitdesktop.app",
+  site: "https://ayoubdroubi.github.io",
   // import.meta.env.BASE_URL mirrors this, so `${BASE_URL}app-icon.svg`
   // resolves to `/app-icon.svg` at the domain root.
-  base: "/",
+  base: "/GitDesktop/",
 
   // Cloudflare 308-redirects every extension-less path to its slash form, so
   // matching that here is what makes an internal link land in one hop instead
