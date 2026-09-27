@@ -1260,16 +1260,16 @@ mod parse_tests {
         RawReviewStateNode, RawSearchAuthor, Step,
     };
 
-    /// Captured verbatim from `gh api graphql` against `repo:theBGuy/GitDesktop
+    /// Captured verbatim from `gh api graphql` against `repo:AyoubDroubi/GitDesktop
     /// type:pr is:closed sort:created-desc` — the shape the parse tree must survive.
-    const PR_SEARCH_FIXTURE: &str = r#"{"data":{"search":{"pageInfo":{"hasNextPage":true,"endCursor":"Y3Vyc29yOjI="},"nodes":[{"number":336,"url":"https://github.com/theBGuy/GitDesktop/pull/336","title":"fix(agent): heap-allocate the capture read buffers","baseRefName":"master","headRefName":"fix/agent-capture-heap-buffers","isDraft":false,"state":"MERGED","author":{"login":"theBGuy","__typename":"User"},"labels":{"nodes":[{"name":"bug"},{"name":"no-changelog"}]},"createdAt":"2026-09-10T23:20:15Z","isCrossRepository":false},{"number":335,"url":"https://github.com/theBGuy/GitDesktop/pull/335","title":"fix(about,health): spawn tool probes off the command future","baseRefName":"master","headRefName":"fix/about-health-stack-overflow","isDraft":false,"state":"MERGED","author":{"login":"theBGuy","__typename":"User"},"labels":{"nodes":[{"name":"bug"}]},"createdAt":"2026-09-10T18:19:41Z","isCrossRepository":false}]}}}"#;
+    const PR_SEARCH_FIXTURE: &str = r#"{"data":{"search":{"pageInfo":{"hasNextPage":true,"endCursor":"Y3Vyc29yOjI="},"nodes":[{"number":336,"url":"https://github.com/AyoubDroubi/GitDesktop/pull/336","title":"fix(agent): heap-allocate the capture read buffers","baseRefName":"master","headRefName":"fix/agent-capture-heap-buffers","isDraft":false,"state":"MERGED","author":{"login":"AyoubDroubi","__typename":"User"},"labels":{"nodes":[{"name":"bug"},{"name":"no-changelog"}]},"createdAt":"2026-09-10T23:20:15Z","isCrossRepository":false},{"number":335,"url":"https://github.com/AyoubDroubi/GitDesktop/pull/335","title":"fix(about,health): spawn tool probes off the command future","baseRefName":"master","headRefName":"fix/about-health-stack-overflow","isDraft":false,"state":"MERGED","author":{"login":"AyoubDroubi","__typename":"User"},"labels":{"nodes":[{"name":"bug"}]},"createdAt":"2026-09-10T18:19:41Z","isCrossRepository":false}]}}}"#;
 
     /// A GitHub App author, captured verbatim from the same document over
     /// `author:app/dependabot`. GraphQL spells the Bot's login BARE here; the CLI list
     /// spells the identical PR's author `app/dependabot`.
-    const BOT_PR_FIXTURE: &str = r#"{"data":{"search":{"pageInfo":{"hasNextPage":true,"endCursor":"Y3Vyc29yOjE="},"nodes":[{"number":340,"url":"https://github.com/theBGuy/GitDesktop/pull/340","title":"chore(deps): bump motion from 12.43.0 to 13.1.0","baseRefName":"master","headRefName":"dependabot/npm_and_yarn/motion-13.1.0","isDraft":false,"state":"OPEN","author":{"login":"dependabot","__typename":"Bot"},"labels":{"nodes":[{"name":"dependencies"},{"name":"javascript"}]},"createdAt":"2026-09-11T11:23:00Z","isCrossRepository":false}]}}}"#;
+    const BOT_PR_FIXTURE: &str = r#"{"data":{"search":{"pageInfo":{"hasNextPage":true,"endCursor":"Y3Vyc29yOjE="},"nodes":[{"number":340,"url":"https://github.com/AyoubDroubi/GitDesktop/pull/340","title":"chore(deps): bump motion from 12.43.0 to 13.1.0","baseRefName":"master","headRefName":"dependabot/npm_and_yarn/motion-13.1.0","isDraft":false,"state":"OPEN","author":{"login":"dependabot","__typename":"Bot"},"labels":{"nodes":[{"name":"dependencies"},{"name":"javascript"}]},"createdAt":"2026-09-11T11:23:00Z","isCrossRepository":false}]}}}"#;
 
-    const ISSUE_SEARCH_FIXTURE: &str = r#"{"data":{"search":{"pageInfo":{"hasNextPage":true,"endCursor":"Y3Vyc29yOjI="},"nodes":[{"number":334,"url":"https://github.com/theBGuy/GitDesktop/issues/334","title":"bug: GitDesktop is crashing at menu Settings / About on Windows","state":"OPEN","author":{"login":"batagy","__typename":"User"},"labels":{"nodes":[{"name":"bug"}]},"createdAt":"2026-09-10T11:32:52Z","updatedAt":"2026-09-10T22:06:34Z"},{"number":333,"url":"https://github.com/theBGuy/GitDesktop/issues/333","title":"feat: Make zooming possible in GUI","state":"OPEN","author":{"login":"batagy","__typename":"User"},"labels":{"nodes":[{"name":"enhancement"}]},"createdAt":"2026-09-10T11:20:42Z","updatedAt":"2026-09-10T11:20:42Z"}]}}}"#;
+    const ISSUE_SEARCH_FIXTURE: &str = r#"{"data":{"search":{"pageInfo":{"hasNextPage":true,"endCursor":"Y3Vyc29yOjI="},"nodes":[{"number":334,"url":"https://github.com/AyoubDroubi/GitDesktop/issues/334","title":"bug: GitDesktop is crashing at menu Settings / About on Windows","state":"OPEN","author":{"login":"batagy","__typename":"User"},"labels":{"nodes":[{"name":"bug"}]},"createdAt":"2026-09-10T11:32:52Z","updatedAt":"2026-09-10T22:06:34Z"},{"number":333,"url":"https://github.com/AyoubDroubi/GitDesktop/issues/333","title":"feat: Make zooming possible in GUI","state":"OPEN","author":{"login":"batagy","__typename":"User"},"labels":{"nodes":[{"name":"enhancement"}]},"createdAt":"2026-09-10T11:20:42Z","updatedAt":"2026-09-10T11:20:42Z"}]}}}"#;
 
     const MERGEABILITY_FIXTURE: &str = r#"{"data":{"search":{"pageInfo":{"hasNextPage":false,"endCursor":"Y3Vyc29yOjM="},"nodes":[{"number":332,"mergeable":"MERGEABLE","state":"OPEN"},{"number":325,"mergeable":"MERGEABLE","state":"OPEN"},{"number":237,"mergeable":"MERGEABLE","state":"OPEN"}]}}}"#;
 
@@ -1293,7 +1293,7 @@ mod parse_tests {
         assert!(!rows[0].is_draft && !rows[0].is_cross_repository);
         assert_eq!(
             rows[0].author.as_ref().map(|a| a.login.as_str()),
-            Some("theBGuy")
+            Some("AyoubDroubi")
         );
         let labels: Vec<String> = rows[0]
             .labels
@@ -1362,12 +1362,12 @@ mod parse_tests {
         assert_eq!(raw.into_author().login, "app/dependabot");
 
         // A User-typed author is already spelled the CLI's way and must stay bare —
-        // prefixing a human would make `displayLogin` render them as `theBGuy[bot]`.
+        // prefixing a human would make `displayLogin` render them as `AyoubDroubi[bot]`.
         let user: Vec<Option<RawPrSearchNode>> = nodes(PR_SEARCH_FIXTURE);
         let row = user.into_iter().flatten().next().expect("one user row");
         let raw = row.author.expect("the user author is present");
         assert_eq!(raw.typename, "User");
-        assert_eq!(raw.into_author().login, "theBGuy");
+        assert_eq!(raw.into_author().login, "AyoubDroubi");
 
         // Idempotent, so a future GraphQL that starts sending the prefix can't yield
         // `app/app/dependabot`.
