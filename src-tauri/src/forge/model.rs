@@ -1046,7 +1046,7 @@ mod tests {
     fn repo_list_serializes_camel_case_wire_keys() {
         let value = serde_json::to_value(ForgeRepoList {
             viewer: "evangoldberg98".into(),
-            owned_namespaces: vec!["thebguy1".into(), "betabotsllc".into()],
+            owned_namespaces: vec!["ayoubdroubi1".into(), "betabotsllc".into()],
             repos: vec![],
         })
         .unwrap();
@@ -1054,7 +1054,7 @@ mod tests {
             value,
             serde_json::json!({
                 "viewer": "evangoldberg98",
-                "ownedNamespaces": ["thebguy1", "betabotsllc"],
+                "ownedNamespaces": ["ayoubdroubi1", "betabotsllc"],
                 "repos": [],
             })
         );
