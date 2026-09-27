@@ -2,7 +2,7 @@
 title: "Work on two branches at once with git worktree"
 description: "git worktree gives a second branch its own folder — one repository, two working trees, no stash dance. The rules that keep it safe, and the cleanup."
 pubDate: 2026-08-19
-author: theBGuy
+author: "Upstream GitDesktop project"
 pillar: git-safety
 tags: ["git", "worktrees", "workflow"]
 ogImage: "/og/work-on-two-branches-at-once.png"
