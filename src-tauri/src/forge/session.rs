@@ -1695,11 +1695,11 @@ mod tests {
     #[test]
     fn gh_json_success_is_healthy() {
         // The exact live JSON a real `gh auth status --json hosts` returns.
-        let json = r#"{"hosts":{"github.com":[{"state":"success","active":true,"host":"github.com","login":"theBGuy","tokenSource":"keyring","scopes":"gist, read:org, repo, workflow","gitProtocol":"https"}]}}"#;
+        let json = r#"{"hosts":{"github.com":[{"state":"success","active":true,"host":"github.com","login":"AyoubDroubi","tokenSource":"keyring","scopes":"gist, read:org, repo, workflow","gitProtocol":"https"}]}}"#;
         let hosts = parse_hosts(json);
         let health = classify_gh_host(&hosts["github.com"]);
         assert_eq!(health.state, SessionState::Healthy);
-        assert_eq!(health.login.as_deref(), Some("theBGuy"));
+        assert_eq!(health.login.as_deref(), Some("AyoubDroubi"));
         assert_eq!(health.active, Some(true));
     }
 
@@ -1710,7 +1710,7 @@ mod tests {
             .map(|e| format!(r#","error":{}"#, serde_json::to_string(e).unwrap()))
             .unwrap_or_default();
         parse_hosts(&format!(
-            r#"{{"hosts":{{"github.com":[{{"state":"{state}","active":true,"host":"github.com","login":"theBGuy"{error}}}]}}}}"#
+            r#"{{"hosts":{{"github.com":[{{"state":"{state}","active":true,"host":"github.com","login":"AyoubDroubi"{error}}}]}}}}"#
         ))
     }
 
@@ -1754,7 +1754,7 @@ mod tests {
             for (health, reprobe) in classify_both(&map) {
                 assert_eq!(health.state, SessionState::RateLimited, "{error}");
                 assert_eq!(health.detail.as_deref(), Some(error));
-                assert_eq!(health.login.as_deref(), Some("theBGuy"));
+                assert_eq!(health.login.as_deref(), Some("AyoubDroubi"));
                 // A re-probe spends another call against the exhausted quota.
                 assert!(!reprobe, "RateLimited must not re-probe: {error}");
                 assert_eq!(health.reset_at, None, "the pure classifier never fetches");
@@ -1851,7 +1851,7 @@ mod tests {
         // every GitHub panel straight into 403s.
         let auth = host_auth_of(one_account("error", Some(GH_403_PRIMARY)));
         assert!(!auth.authenticated);
-        assert_eq!(auth.login.as_deref(), Some("theBGuy"));
+        assert_eq!(auth.login.as_deref(), Some("AyoubDroubi"));
     }
 
     #[test]
@@ -2554,9 +2554,9 @@ mod tests {
     fn reconnect_login_parse() {
         let lines = vec![
             "some noise".to_string(),
-            "✓ Logged in as theBGuy".to_string(),
+            "✓ Logged in as AyoubDroubi".to_string(),
         ];
-        assert_eq!(parse_reconnect_login(&lines).as_deref(), Some("theBGuy"));
+        assert_eq!(parse_reconnect_login(&lines).as_deref(), Some("AyoubDroubi"));
     }
 
     // ── cancel-before-register race ──
