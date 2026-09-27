@@ -2116,21 +2116,21 @@ remote:          - commit: 64a012e497764a53e38949a968553daa2d8f51a3
 remote:            path: src-tauri/src/forge/gitlab_findings.rs:1151
 remote:
 remote:        (?) To push, remove secret from commit(s) or follow this URL to allow the secret.
-remote:        https://github.com/theBGuy/GitDesktop/security/secret-scanning/unblock-secret/<id>
+remote:        https://github.com/AyoubDroubi/GitDesktop/security/secret-scanning/unblock-secret/<id>
 remote:
 remote:
-To https://github.com/theBGuy/GitDesktop.git
+To https://github.com/AyoubDroubi/GitDesktop.git
  ! [remote rejected] feat/security-findings-phase-3 -> feat/security-findings-phase-3 (push declined due to repository rule violations)
-error: failed to push some refs to 'https://github.com/theBGuy/GitDesktop.git'
+error: failed to push some refs to 'https://github.com/AyoubDroubi/GitDesktop.git'
 ";
 
     /// A branch simply behind its remote: the negative control for the block
     /// above. It shares the `failed to push some refs` tail, so anything the
     /// frontend anchors on has to come from the push-protection block itself.
     const NON_FAST_FORWARD_STDERR: &str = "\
-To https://github.com/theBGuy/GitDesktop.git
+To https://github.com/AyoubDroubi/GitDesktop.git
  ! [rejected]        main -> main (non-fast-forward)
-error: failed to push some refs to 'https://github.com/theBGuy/GitDesktop.git'
+error: failed to push some refs to 'https://github.com/AyoubDroubi/GitDesktop.git'
 hint: Updates were rejected because the tip of your current branch is behind
 ";
 
@@ -2211,7 +2211,7 @@ fatal: Authentication failed for 'https://github.com/octocat/Hello-World.git/'
     /// A push to a repository the authenticated account cannot write, same
     /// provenance: the account is recognized, the permission is not there.
     const FORBIDDEN_STDERR: &str = "\
-remote: Permission to octocat/Hello-World.git denied to theBGuy.
+remote: Permission to octocat/Hello-World.git denied to AyoubDroubi.
 fatal: unable to access 'https://github.com/octocat/Hello-World.git/': The requested URL returned error: 403
 ";
 
@@ -2236,13 +2236,13 @@ fatal: unable to access 'http://192.168.1.10:99xx/gituser1/GitDesktop/': The req
 ";
 
     /// A push dry-run against an archived GitLab project — measured against
-    /// gitlab.com on git 2.51.1.windows.1, 2026-09 (`theBGuy/gitdesktop-gitlab-demo`,
+    /// gitlab.com on git 2.51.1.windows.1, 2026-09 (`AyoubDroubi/gitdesktop-gitlab-demo`,
     /// archived via the API for this capture and unarchived immediately after).
     /// GitLab's wording carries neither "read-only" nor "repository", so it needs
     /// its own marker rather than widening the generic one.
     const GITLAB_ARCHIVED_STDERR: &str = "\
 remote: You can't push code to an archived project.
-fatal: unable to access 'https://gitlab.com/theBGuy/gitdesktop-gitlab-demo.git/': The requested URL returned error: 403
+fatal: unable to access 'https://gitlab.com/AyoubDroubi/gitdesktop-gitlab-demo.git/': The requested URL returned error: 403
 ";
 
     /// git asked for a username with prompting disabled and nothing in the
@@ -2268,13 +2268,13 @@ fatal: could not read Password for 'https://user@bitbucket.org': terminal prompt
     /// does not.
     const GITLAB_REJECTED_CREDENTIALS_STDERR: &str = "\
 remote: HTTP Basic: Access denied. If a password was provided for Git authentication, the password was incorrect or you're required to use a token instead of a password. If a token was provided, it was either incorrect, expired, or improperly scoped. See https://gitlab.com/help/topics/git/troubleshooting_git.md#error-on-git-fetch-http-basic-access-denied
-fatal: Authentication failed for 'https://gitlab.com/theBGuy/gitdesktop-gitlab-demo.git/'
+fatal: Authentication failed for 'https://gitlab.com/AyoubDroubi/gitdesktop-gitlab-demo.git/'
 ";
 
     /// The Bitbucket counterpart, same provenance.
     const BITBUCKET_REJECTED_CREDENTIALS_STDERR: &str = "\
 remote: You may not have access to this repository or it no longer exists in this workspace. If you think this repository exists and you have access, make sure you are authenticated.
-fatal: Authentication failed for 'https://bitbucket.org/thebguy1/dispatch-demo.git/'
+fatal: Authentication failed for 'https://bitbucket.org/ayoubdroubi1/dispatch-demo.git/'
 ";
 
     /// A push to a GitLab project the authenticated account cannot write
