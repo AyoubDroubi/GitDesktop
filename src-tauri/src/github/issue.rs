@@ -1560,7 +1560,7 @@ mod tests {
     fn detects_the_disabled_issues_signature() {
         // The full line gh prints on a repo with issues turned off.
         assert!(is_issues_disabled(
-            "the 'theBGuy/biome' repository has disabled issues"
+            "the 'AyoubDroubi/biome' repository has disabled issues"
         ));
         // Match is case-insensitive (gh capitalization can drift).
         assert!(is_issues_disabled("The 'a/b' repository HAS DISABLED ISSUES"));
